@@ -8,8 +8,8 @@ const { width, height } = Dimensions.get("window");
 
 export default function TrendingMovies({ data }) {
   const navigation = useNavigation();
-  const handleClick = () => {
-    navigation.navigate("Movie");
+  const handleClick = (item) => {
+    navigation.navigate("Movie", item);
   };
   return (
     <View style={{ marginBottom: 32 }}>
@@ -49,7 +49,7 @@ export default function TrendingMovies({ data }) {
 
 const MovieCard = ({ item, handleClick }) => {
   return (
-    <TouchableWithoutFeedback onPress={handleClick}>
+    <TouchableWithoutFeedback onPress={() => handleClick(item)}>
       <Image
         className="flex items-center justify-center h-screen"
         source={require("../assets/moviePoster1.jpg")}
